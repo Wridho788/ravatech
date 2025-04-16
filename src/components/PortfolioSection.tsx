@@ -1,75 +1,181 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 
-const webApps = [
-  {
-    title: "ERP Admin Dashboard",
-    desc: "Sistem backend untuk mengelola inventory, finance, dan laporan.",
-    image: "/portfolio/erp-admin.png",
-  },
-  {
-    title: "NFT Marketplace Web",
-    desc: "Marketplace untuk jual beli NFT dengan integrasi Metamask.",
-    image: "/portfolio/nft-marketplace.png",
-  },
-  {
-    title: "E-Commerce Website",
-    desc: "Tampilan toko online modern dengan cart dan pembayaran terintegrasi.",
-    image: "/portfolio/ecommerce-web.png",
-  },
-]
 
-const mobileApps = [
-  {
-    title: "Crypto Wallet App",
-    desc: "UI aplikasi mobile untuk mengelola aset digital.",
-    image: "/portfolio/crypto-wallet.png",
+const portfolioData = {
+  web: {
+    saas: [
+      {
+        title: "PickTime",
+        description: "Platform SaaS untuk manajemen waktu dan penjadwalan meeting",
+        image: "/portfolio/web/saas.jpg",
+        tech: ["Next.js", "Tailwind", "Supabase"],
+        link: "#"
+      },
+      {
+        title: "TaskTugas",
+        description: "SaaS untuk kolaborasi dan manajemen tugas",
+        image: "/portfolio/web/saas-tugas.jpg",
+        tech: ["React", "Firebase"],
+        link: "#"
+      }
+    ],
+    ecommerce: [
+      {
+        title: "TradeWave",
+        description: "Marketplace e-commerce modern",
+        image: "/portfolio/web/marketplace-modern.jpg",
+        tech: ["Next.js", "Stripe", "Tailwind"],
+        link: "#"
+      }
+    ],
+    blockchain: [
+      {
+        title: "Neo Armory",
+        description: "Platform NFT berbasis blockchain",
+        image: "/portfolio/web/nft-marketplace.jpg",
+        tech: ["Web3.js", "Solidity", "Next.js"],
+        link: "#"
+      }
+    ],
+    landing: [
+      {
+        title: "Ravatech Landing",
+        description: "Company profile website",
+        image: "/portfolio/web/portfolio-company.png",
+        tech: ["Next.js", "Tailwind"],
+        link: "#"
+      }
+    ]
   },
-  {
-    title: "Mobile POS",
-    desc: "Sistem kasir ringan untuk Android/iOS.",
-    image: "/portfolio/mobile-pos.png",
-  },
-  {
-    title: "Booking System",
-    desc: "Aplikasi booking layanan dengan notifikasi dan kalender.",
-    image: "/portfolio/booking-app.png",
-  },
-]
+  mobile: {
+    ecommerce: [
+      {
+        title: "QuickBuy Mobile",
+        description: "Aplikasi e-commerce dengan UI modern",
+        image: "/portfolio/mobile/QuickBuyMobile.jpg",
+        tech: ["React Native", "Redux", "Firebase"],
+        link: "#"
+      }
+    ],
+    web3: [
+      {
+        title: "ORIX",
+        description: "Dompet NFT dengan fitur secure wallet dan gallery",
+        image: "/portfolio/mobile/orix.jpg",
+        tech: ["Flutter", "Web3Dart"],
+        link: "#"
+      }
+    ],
+    internal: [
+      {
+        title: "FieldOps",
+        description: "Aplikasi internal untuk field reporting dan checklist",
+        image: "/portfolio/mobile/FieldOps.jpg",
+        tech: ["React Native", "Realm DB"],
+        link: "#"
+      }
+    ]
+  }
+}
 
-const SectionGroup = ({ title, items }: { title: string, items: typeof webApps }) => (
-  <div className="mb-16">
-    <h3 className="text-2xl font-heading text-white mb-6">{title}</h3>
-    <div className="grid md:grid-cols-3 gap-8">
+interface PortfolioItem {
+  title: string;
+  description: string;
+  image: any;
+  tech: string[];
+  link: string;
+}
+
+export const PortfolioGrid = ({ items }: { items: PortfolioItem[] }) => {
+  return (
+    <motion.div
+      key={JSON.stringify(items)}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.4 }}
+      className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+    >
       {items.map((item, index) => (
-        <motion.div
+        <div
           key={index}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: index * 0.2 }}
-          viewport={{ once: true }}
-          className="bg-[#11152e] rounded-2xl p-4 shadow hover:shadow-xl transition"
+          className="rounded-2xl overflow-hidden bg-white shadow-lg hover:shadow-xl transition-all duration-300"
         >
-          <img src={item.image} alt={item.title} className="rounded-xl mb-4 w-full object-cover h-40" />
-          <h4 className="text-white text-lg font-semibold mb-1">{item.title}</h4>
-          <p className="text-softgray text-sm">{item.desc}</p>
-        </motion.div>
+          <img
+            src={item.image}
+            alt={item.title}
+            className="w-full h-48 object-cover"
+            loading="lazy"
+          />
+          <div className="p-4">
+            <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+            <p className="text-sm text-gray-600 mb-2">{item.description}</p>
+            <div className="flex flex-wrap gap-2 text-xs text-gray-500">
+              {item.tech.map((tech, i) => (
+                <span
+                  key={i}
+                  className="bg-gray-100 px-2 py-1 rounded-full"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
       ))}
-    </div>
-  </div>
-)
+    </motion.div>
+  );
+};
 
 export default function PortfolioSection() {
   return (
-    <section className="px-4 md:px-16 py-20 bg-[#0c1329]">
-      <h2 className="text-3xl font-heading text-cyan text-center mb-4">Our Work</h2>
-      <p className="text-softgray text-center max-w-xl mx-auto mb-12">
-        Proyek web dan mobile yang kami tangani — dari ERP hingga Web3.
-      </p>
+    <section className="py-16 px-4 md:px-12 bg-gray-50">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-0"></div>
+          <h2 className="text-4xl mb-4 text-gray-800 text-center">Our Work</h2>
+          <div className="w-24 h-1 bg-blue-500 mx-auto rounded-full"></div>
+        </div>
 
-      <SectionGroup title="Web Applications" items={webApps} />
-      <SectionGroup title="Mobile Applications" items={mobileApps} />
+        <Tabs defaultValue="saas" className="w-full">
+          <TabsList className="flex flex-wrap justify-center gap-3 mb-8 p-2 bg-white rounded-2xl shadow-sm">
+            <TabsTrigger className="px-4 py-2 rounded-xl transition-all hover:bg-blue-50" value="saas">SaaS</TabsTrigger>
+            <TabsTrigger className="px-4 py-2 rounded-xl transition-all hover:bg-blue-50" value="ecommerce">Web E-Commerce</TabsTrigger>
+            <TabsTrigger className="px-4 py-2 rounded-xl transition-all hover:bg-blue-50" value="blockchain">Blockchain</TabsTrigger>
+            <TabsTrigger className="px-4 py-2 rounded-xl transition-all hover:bg-blue-50" value="landing">Landing Page</TabsTrigger>
+            <TabsTrigger className="px-4 py-2 rounded-xl transition-all hover:bg-blue-50" value="mobile-ecommerce">Mobile E-Commerce</TabsTrigger>
+            <TabsTrigger className="px-4 py-2 rounded-xl transition-all hover:bg-blue-50" value="mobile-web3">Mobile Web3</TabsTrigger>
+            <TabsTrigger className="px-4 py-2 rounded-xl transition-all hover:bg-blue-50" value="mobile-internal">Internal Apps</TabsTrigger>
+          </TabsList>
+
+          <div className="bg-white p-6 rounded-2xl shadow-sm">
+            <AnimatePresence mode="wait">
+              <TabsContent value="saas">
+                <PortfolioGrid items={portfolioData.web.saas} />
+              </TabsContent>
+              <TabsContent value="ecommerce">
+                <PortfolioGrid items={portfolioData.web.ecommerce} />
+              </TabsContent>
+              <TabsContent value="blockchain">
+                <PortfolioGrid items={portfolioData.web.blockchain} />
+              </TabsContent>
+              <TabsContent value="landing">
+                <PortfolioGrid items={portfolioData.web.landing} />
+              </TabsContent>
+              <TabsContent value="mobile-ecommerce">
+                <PortfolioGrid items={portfolioData.mobile.ecommerce} />
+              </TabsContent>
+              <TabsContent value="mobile-web3">
+                <PortfolioGrid items={portfolioData.mobile.web3} />
+              </TabsContent>
+              <TabsContent value="mobile-internal">
+                <PortfolioGrid items={portfolioData.mobile.internal} />
+              </TabsContent>
+            </AnimatePresence>
+          </div>
+        </Tabs>
     </section>
-  )
+  );
 }
