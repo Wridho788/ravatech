@@ -132,7 +132,7 @@ export const PortfolioGrid = ({ items }: { items: PortfolioItem[] }) => {
 
 export default function PortfolioSection() {
   return (
-    <section className="py-16 px-4 md:px-12 bg-gray-50">
+    <section className="py-16 px-4 md:px-12 bg-gray-50" id="portfolio">
       <div className="max-w-6xl mx-auto">
         <div className="mb-0"></div>
           <h2 className="text-4xl mb-4 text-gray-800 text-center">Our Work</h2>
