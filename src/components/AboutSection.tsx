@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-28 px-4 md:px-16   text-white">
+    <section id="about" className="py-28 px-4 md:px-16 bg-[#0c1329] text-white">
       <div className="max-w-7xl mx-auto text-center">
         {/* Heading */}
         <motion.h2
@@ -13,49 +13,88 @@ export default function AboutSection() {
           transition={{ duration: 0.6 }}
           className="text-3xl md:text-4xl font-bold mb-6 text-cyan"
         >
-          Tentang Ravatech
+          Who We Are
         </motion.h2>
 
-        {/* General Description */}
+        {/* Description */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-softgray text-lg mb-10 max-w-3xl mx-auto"
+          className="text-softgray text-lg mb-12 max-w-3xl mx-auto"
         >
-          Di Ravatech, kami membantu perusahaan untuk membangun produk digital yang modern, scalable, dan berdampak. Kami fokus pada ide-ide yang inovatif, memberikan solusi yang efisien dengan teknologi terkini di web, mobile, dan blockchain. Kami bekerja bersama klien untuk memastikan setiap langkah diambil dengan hati-hati, dari perencanaan hingga peluncuran produk.
+          Ravatech is a digital partner for founders and companies who want to
+          build products that scale. We turn ideas into powerful, modern apps —
+          crafted with purpose, precision, and the future in mind.
         </motion.p>
 
-        {/* Misi dan Nilai */}
-        <div className="grid md:grid-cols-2 gap-12 mt-10">
-          {/* Mission Card */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="bg-[#1a2635] p-8 rounded-xl shadow-lg text-left"
-          >
-            <h3 className="text-xl font-semibold mb-3 text-cyan">Misi Kami</h3>
-            <p className="text-softgray text-lg">
-              Misi kami adalah untuk mempercepat pertumbuhan perusahaan dengan menyediakan solusi teknologi yang inovatif, mudah diakses, dan dapat disesuaikan dengan kebutuhan setiap klien. Kami berkomitmen untuk membangun hubungan jangka panjang dengan klien kami melalui kolaborasi yang erat dan kualitas yang konsisten.
-            </p>
-          </motion.div>
+        {/* Mission */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="bg-[#121d34] p-8 md:p-10 rounded-2xl shadow-xl text-left max-w-4xl mx-auto"
+        >
+          <h3 className="text-2xl font-semibold mb-4 text-cyan">Our Mission</h3>
+          <p className="text-softgray text-base md:text-lg leading-relaxed">
+            Empower innovators through clean code, smart design, and lean
+            execution. We make building products feel effortless — without
+            cutting corners.
+          </p>
+        </motion.div>
+      </div>
 
-          {/* Values Card */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="bg-[#1a2635] p-8 rounded-xl shadow-lg text-left"
+      {/* Core Values */}
+      <div className="mt-24 bg-[#0f1a2f] rounded-3xl px-6 md:px-12 py-20">
+        <div className="max-w-7xl mx-auto text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl font-bold mb-12 text-cyan"
           >
-            <h3 className="text-xl font-semibold mb-3 text-cyan">Nilai-Nilai Kami</h3>
-            <ul className="text-softgray text-lg list-disc pl-5 space-y-2">
-              <li>Innovasi berkelanjutan dalam setiap proyek.</li>
-              <li>Fokus pada kolaborasi dan komunikasi yang jelas.</li>
-              <li>Menjaga kualitas dan performa yang tak tertandingi.</li>
-              <li>Berkomitmen terhadap integritas dan transparansi.</li>
-            </ul>
-          </motion.div>
+            Our Core Values
+          </motion.h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            {/* Value Cards */}
+            {[
+              {
+                icon: "💡",
+                title: "Clarity",
+                desc: "Simple, intentional, and focused solutions.",
+              },
+              {
+                icon: "⚡",
+                title: "Speed",
+                desc: "Move fast with confidence, iterate smarter.",
+              },
+              {
+                icon: "🎯",
+                title: "Precision",
+                desc: "Every detail matters, from UX to architecture.",
+              },
+              {
+                icon: "🤝",
+                title: "Integrity",
+                desc: "Honest communication. No BS, no shortcuts.",
+              },
+            ].map((value, idx) => (
+              <motion.div
+                key={value.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.2 + idx * 0.1 }}
+                className="bg-[#1a2635] p-6 rounded-xl shadow-md text-left flex flex-col items-start hover:shadow-lg transition-all duration-300"
+              >
+                <div className="text-cyan mb-4 text-3xl">{value.icon}</div>
+                <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
+                <p className="text-softgray text-sm leading-relaxed">
+                  {value.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
