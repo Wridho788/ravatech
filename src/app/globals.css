@@ -3,11 +3,32 @@
 @theme {
   --color-primary: #191726;
   --color-secondary: #2d2945;
-  --color-accent: #00c2ff;
+  --color-accent: #ff8800;
+  --color-neutral: #ededed;
   --color-background: #ededed;
   
   --font-body: var(--font-inter);
   --font-heading: var(--font-sora);
+  
+  /* Spacing Scale: 8 / 12 / 16 / 24 / 32 / 48 / 64 / 96 */
+  --spacing-xs: 0.5rem;    /* 8px */
+  --spacing-sm: 0.75rem;   /* 12px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 2rem;      /* 32px */
+  --spacing-2xl: 3rem;     /* 48px */
+  --spacing-3xl: 4rem;     /* 64px */
+  --spacing-4xl: 6rem;     /* 96px */
+  
+  /* Typography Scale */
+  --text-h1: 3.5rem;       /* 56px desktop */
+  --text-h2: 2.25rem;      /* 36px desktop */
+  --text-h3: 1.5rem;       /* 24px */
+  --text-body: 1.125rem;   /* 18px */
+  --text-small: 0.875rem;  /* 14px */
+  
+  /* Container */
+  --container-max: 71.25rem; /* 1140px */
 }
 
 html {
@@ -18,10 +39,79 @@ body {
   background-color: var(--color-background);
   color: var(--color-primary);
   font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Typography System */
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 5vw, var(--text-h1));
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--spacing-lg);
+}
+
+h2 {
+  font-size: clamp(1.75rem, 4vw, var(--text-h2));
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--spacing-md);
+}
+
+h3 {
+  font-size: var(--text-h3);
+  font-weight: 500;
+  margin-bottom: var(--spacing-sm);
+}
+
+p {
+  line-height: 1.7;
+  margin-bottom: var(--spacing-md);
+}
+
+/* Container System */
+.container {
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 3vw, 2rem);
+  padding-right: clamp(1rem, 3vw, 2rem);
+}
+
+/* Section Spacing */
+section {
+  padding-top: var(--spacing-3xl);
+  padding-bottom: var(--spacing-3xl);
+}
+
+@media (min-width: 768px) {
+  section {
+    padding-top: var(--spacing-4xl);
+    padding-bottom: var(--spacing-4xl);
+  }
+}
+
+/* Motion Principles */
+* {
+  transition-duration: 200ms;
+  transition-timing-function: ease-out;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

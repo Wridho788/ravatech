@@ -13,19 +13,27 @@ export function CTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center bg-primary rounded-3xl p-12 md:p-16"
+          className="bg-primary rounded-3xl p-12 md:p-16 text-center relative overflow-hidden"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-            Have a real problem to solve?
-          </h2>
-          <p className="text-xl text-white/80 mb-8">
-            Let's talk.
-          </p>
-          <Link href="/contact">
-            <Button className="bg-white text-primary hover:bg-white/90">
-              Get in Touch
-            </Button>
-          </Link>
+          {/* Subtle background decoration */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-accent rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent rounded-full blur-3xl"></div>
+          </div>
+          
+          <div className="relative z-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+              Have a project in mind?
+            </h2>
+            <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed">
+              No sales pitch. Just a short conversation to see if we're a good fit.
+            </p>
+            <Link href="/contact">
+              <Button variant="primary" className="text-lg px-10 py-4 shadow-lg hover:shadow-xl">
+                Contact Ravatech
+              </Button>
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>

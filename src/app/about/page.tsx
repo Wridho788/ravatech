@@ -3,6 +3,33 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
+import { CheckCircle2 } from 'lucide-react'
+
+const values = [
+  {
+    title: 'Clarity',
+    description: 'Clear communication, clear decisions.'
+  },
+  {
+    title: 'Usefulness',
+    description: 'If it\'s not used, it\'s not done.'
+  },
+  {
+    title: 'Ownership',
+    description: 'We treat products like our own.'
+  },
+  {
+    title: 'Sustainability',
+    description: 'Built to last, not to impress.'
+  }
+]
+
+const workingPrinciples = [
+  'Problem first, not features',
+  'Clear scope before building',
+  'Honest trade-offs',
+  'Long-term thinking'
+]
 
 export default function AboutPage() {
   return (
@@ -13,68 +40,92 @@ export default function AboutPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">About Ravatech</h1>
+          {/* Page Hero */}
+          <div className="mb-16">
+            <p className="text-sm uppercase tracking-wider text-accent font-medium mb-4">
+              About Ravatech
+            </p>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              Building Digital Systems That Make Sense
+            </h1>
+            <p className="text-xl text-secondary leading-relaxed">
+              Ravatech is a small, focused studio building digital products for real operational needs.
+            </p>
+          </div>
           
-          {/* Company Story */}
+          {/* Why We Exist */}
           <section className="mb-16">
-            <h2 className="text-3xl font-bold mb-6">Why We Exist</h2>
+            <h2 className="text-3xl font-bold mb-6">Why Ravatech Exists</h2>
             <div className="space-y-4 text-lg text-secondary leading-relaxed">
               <p>
-                Ravatech was founded on a simple observation: too many businesses struggle with software that doesn't fit their actual needs. Either they're forced into rigid SaaS products that require changing their workflows, or they're promised custom solutions that never materialize properly.
+                We started Ravatech after seeing too many digital products that looked good but failed in real use.
               </p>
-              <p>
-                We exist to build real systems that solve real problems. Not to chase trends, not to oversell capabilities, but to engineer practical solutions that work.
-              </p>
-              <p>
-                Every project we take on starts with understanding the problem deeply. We don't believe in one-size-fits-all solutions because we know that meaningful software comes from understanding specific contexts, constraints, and requirements.
+              <p className="font-medium text-primary">
+                Our focus is simple: build systems that are actually used, maintained, and trusted.
               </p>
             </div>
           </section>
 
-          {/* Philosophy */}
-          <section className="mb-16 bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-            <h2 className="text-3xl font-bold mb-6">Our Philosophy</h2>
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-xl font-bold mb-2">Engineer-Driven</h3>
-                <p className="text-secondary">
-                  Decisions are made based on technical merit and practical requirements, not marketing buzzwords or fashionable frameworks.
-                </p>
+          {/* Founder Section */}
+          <section className="mb-16 bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-gray-100">
+            <h2 className="text-3xl font-bold mb-6">The Builder</h2>
+            <div className="space-y-4 text-lg text-secondary leading-relaxed">
+              <p>
+                <span className="font-bold text-primary">Ridho</span> is a product-focused engineer who designs and builds digital systems end-to-end — from UX and architecture to production deployment.
+              </p>
+              <p>
+                He works closely with clients to understand real workflows, not just feature requests.
+              </p>
+            </div>
+            
+            <div className="mt-8 space-y-2">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-accent shrink-0" />
+                <span className="text-secondary">Shipped production systems</span>
               </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">Problem-First</h3>
-                <p className="text-secondary">
-                  We start with your problem, not our solutions. Technology choices follow from requirements, not the other way around.
-                </p>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-accent shrink-0" />
+                <span className="text-secondary">Worked with communities & organizations</span>
               </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">Long-Term Thinking</h3>
-                <p className="text-secondary">
-                  Systems are built to be maintainable, scalable, and adaptable. Quick hacks and technical debt are avoided from day one.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">Honest Communication</h3>
-                <p className="text-secondary">
-                  We tell you what's possible, what's not, and why. No inflated promises, no hidden complexities discovered halfway through.
-                </p>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-accent shrink-0" />
+                <span className="text-secondary">Focused on long-term maintainability</span>
               </div>
             </div>
           </section>
 
-          {/* Founder Story */}
+          {/* How We Work */}
+          <section className="mb-16 bg-secondary/5 rounded-2xl p-8 md:p-10">
+            <h2 className="text-3xl font-bold mb-6">How Ravatech Works</h2>
+            <p className="text-lg text-secondary mb-6 leading-relaxed">
+              We follow principles that ensure quality and sustainability:
+            </p>
+            <div className="grid md:grid-cols-2 gap-4">
+              {workingPrinciples.map((principle, index) => (
+                <div key={index} className="flex items-center gap-3 bg-white p-4 rounded-xl">
+                  <CheckCircle2 className="w-5 h-5 text-accent shrink-0" />
+                  <span className="font-medium">{principle}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* What We Value */}
           <section className="mb-16">
-            <h2 className="text-3xl font-bold mb-6">How We Work</h2>
-            <div className="space-y-4 text-lg text-secondary leading-relaxed">
-              <p>
-                Every project follows a disciplined engineering process: understand the problem, design a practical solution, build it properly, and support it long-term.
-              </p>
-              <p>
-                We handle everything end-to-end—from initial problem analysis through system architecture, implementation, testing, deployment, and ongoing maintenance. This ensures consistency and accountability throughout the entire lifecycle.
-              </p>
-              <p>
-                Our approach is iterative and collaborative. We expect requirements to evolve as understanding deepens, and we build systems flexible enough to accommodate necessary changes without requiring complete rewrites.
-              </p>
+            <h2 className="text-3xl font-bold mb-8">What We Value</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              {values.map((value, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-white rounded-2xl p-6 border border-gray-100"
+                >
+                  <h3 className="text-xl font-bold mb-2">{value.title}</h3>
+                  <p className="text-secondary">{value.description}</p>
+                </motion.div>
+              ))}
             </div>
           </section>
 
@@ -86,16 +137,23 @@ export default function AboutPage() {
             className="bg-primary text-white rounded-3xl p-8 md:p-12 text-center"
           >
             <h2 className="text-3xl font-bold mb-4">
-              Working on something that needs proper engineering?
+              Want to see what we've built?
             </h2>
             <p className="text-xl text-white/80 mb-8">
-              Let's discuss how we can help.
+              View our case studies and real projects.
             </p>
-            <Link href="/contact">
-              <Button className="bg-white text-primary hover:bg-white/90">
-                Get in Touch
-              </Button>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/work">
+                <Button variant="primary">
+                  View Our Work
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button variant="secondary" className="border-white text-white hover:bg-white/10">
+                  Get in Touch
+                </Button>
+              </Link>
+            </div>
           </motion.div>
         </motion.div>
       </div>
