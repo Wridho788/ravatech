@@ -16,7 +16,7 @@ export function ProcessSection() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
             How We Work
           </h2>
-          <p className="text-center text-secondary mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-secondary mb-12">
             A rational, engineering-driven approach to building systems that work.
           </p>
           <div className="grid md:grid-cols-2 gap-8">
@@ -29,7 +29,7 @@ export function ProcessSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="flex gap-4"
               >
-                <div className="flex-shrink-0">
+                <div className="shrink-0">
                   <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
                     <span className="text-2xl font-bold text-accent">
                       {step.number}

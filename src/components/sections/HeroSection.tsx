@@ -46,7 +46,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-xl md:text-2xl text-secondary mb-10 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-secondary mb-10 leading-relaxed"
           >
             From internal tools to public platforms — designed, built, and shipped with real users in mind.
           </motion.p>

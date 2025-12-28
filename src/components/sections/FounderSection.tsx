@@ -16,7 +16,7 @@ export function FounderSection() {
           <h2 className="text-3xl md:text-4xl font-bold mb-8">
             Built by Engineers, Not Marketers
           </h2>
-          <div className="max-w-2xl mx-auto space-y-4 text-lg text-secondary">
+          <div className="space-y-4 text-lg text-secondary">
             <p>
               Ravatech is founded on the principle that good software comes from understanding real problems deeply, not from following trends or making grand promises.
             </p>

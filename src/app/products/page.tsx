@@ -93,7 +93,7 @@ export default function ProductsPage() {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Digital Products, Built for Real Operations
             </h1>
-            <p className="text-xl text-secondary max-w-3xl leading-relaxed">
+            <p className="text-xl text-secondary leading-relaxed">
               We design and develop systems tailored to how your business actually works.
             </p>
           </div>

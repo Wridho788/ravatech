@@ -52,7 +52,7 @@ export default function ContactPage() {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Start a Conversation
             </h1>
-            <p className="text-xl text-secondary max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-secondary leading-relaxed">
               No sales pitch. Just a short discussion to understand your problem.
             </p>
           </div>

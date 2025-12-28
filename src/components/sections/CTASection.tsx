@@ -25,7 +25,7 @@ export function CTASection() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
               Have a project in mind?
             </h2>
-            <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-white/80 mb-8 leading-relaxed">
               No sales pitch. Just a short conversation to see if we're a good fit.
             </p>
             <Link href="/contact">

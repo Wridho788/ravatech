@@ -17,7 +17,7 @@ export function Footer() {
         <div className="grid md:grid-cols-2 gap-12 mb-12">
           <div>
             <h3 className="text-3xl font-bold mb-4">Ravatech</h3>
-            <p className="text-white/80 text-lg leading-relaxed max-w-md">
+            <p className="text-white/80 text-lg leading-relaxed">
               Building digital systems that actually get used. From internal tools to public platforms.
             </p>
           </div>

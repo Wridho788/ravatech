@@ -27,7 +27,7 @@ export default function WorkPage() {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Work and Case Studies
             </h1>
-            <p className="text-xl text-secondary max-w-2xl leading-relaxed">
+            <p className="text-xl text-secondary leading-relaxed">
               A selection of systems we have designed, built, and shipped for real users.
             </p>
           </div>
@@ -92,7 +92,7 @@ export default function WorkPage() {
               <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+                className="bg-white rounded-3xl w-full max-h-[90vh] overflow-y-auto"
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="p-8 md:p-12 border-b border-gray-100">
