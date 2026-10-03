@@ -1,53 +1,12 @@
 import Link from 'next/link'
-
-const footerLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/work', label: 'Work' },
-  { href: '/products', label: 'Products' },
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
-]
+import { ArrowUpRight } from 'lucide-react'
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
-
-  return (
-    <footer className="bg-primary text-white py-16 px-4">
-      <div className="container mx-auto max-w-6xl">
-        <div className="grid md:grid-cols-2 gap-12 mb-12">
-          <div>
-            <h3 className="text-3xl font-bold mb-4">Ravatech</h3>
-            <p className="text-white/80 text-lg leading-relaxed">
-              Building digital systems that actually get used. From internal tools to public platforms.
-            </p>
-          </div>
-          <div className="md:text-right">
-            <h4 className="text-sm uppercase tracking-wider text-white/60 mb-4">Quick Links</h4>
-            <div className="flex flex-wrap gap-6 md:justify-end">
-              {footerLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-white/80 hover:text-white transition-colors font-medium"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-            <div className="mt-8">
-              <Link 
-                href="/contact"
-                className="inline-block bg-accent text-primary px-6 py-3 rounded-xl font-medium hover:brightness-110 transition-all"
-              >
-                Contact Ravatech
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div className="border-t border-white/20 pt-8 text-center text-white/60 text-sm">
-          <p>© {currentYear} Ravatech. Built with purpose, not templates.</p>
-        </div>
-      </div>
-    </footer>
-  )
+  return <footer className="bg-ink text-white">
+    <div className="site-container grid gap-12 py-16 md:grid-cols-[1.3fr_1fr] md:py-20">
+      <div><p className="eyebrow !text-[#efad91]">Ravatech</p><h2 className="mt-5 max-w-xl font-heading text-4xl font-semibold leading-tight tracking-[-.055em] md:text-5xl">Dibuat untuk bekerja.<br/><span className="editorial-serif text-[#efad91]">Dirancang untuk manusia.</span></h2><p className="mt-6 max-w-lg text-sm leading-7 text-white/65">Studio digital independen yang menghubungkan pemikiran produk, desain, dan engineering.</p></div>
+      <div className="grid grid-cols-2 gap-8 md:justify-self-end"><div><p className="mb-5 text-xs font-bold uppercase tracking-[.18em] text-white/45">Jelajahi</p><div className="flex flex-col gap-3 text-sm"><Link href="/work" className="hover:text-cyan">Karya</Link><Link href="/products" className="hover:text-cyan">Layanan</Link><Link href="/about" className="hover:text-cyan">Tentang</Link></div></div><div><p className="mb-5 text-xs font-bold uppercase tracking-[.18em] text-white/45">Terhubung</p><div className="flex flex-col gap-3 text-sm"><Link href="/contact" className="hover:text-cyan">Kontak</Link><a href="mailto:contact@ravatech.com" className="inline-flex items-center gap-1 hover:text-cyan">Email <ArrowUpRight size={14}/></a></div></div></div>
+    </div>
+    <div className="site-container flex flex-col gap-3 border-t border-white/15 py-6 text-xs text-white/50 sm:flex-row sm:justify-between"><span>© {new Date().getFullYear()} Ravatech.</span><span>Dipikirkan dan dibuat dengan sengaja.</span></div>
+  </footer>
 }

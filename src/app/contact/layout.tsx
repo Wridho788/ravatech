@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Contact — Ravatech',
-  description: 'Get in touch with Ravatech to discuss your project. We build custom digital products from real requirements.',
+  title: 'Kontak — Ravatech',
+  description: 'Ceritakan kebutuhan digitalmu dan mulai percakapan dengan Ravatech.',
 }
 
 export default function ContactLayout({

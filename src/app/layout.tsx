@@ -17,17 +17,20 @@ const sora = Sora({
 })
 
 export const metadata: Metadata = {
-  title: 'Ravatech — Build. Scale. Evolve.',
-  description: 'Digital products built from real problems, not assumptions.',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000')),
+  title: 'Ravatech — Digital yang punya arah',
+  description: 'Ravatech merancang dan membangun website, platform publik, dan sistem internal yang berangkat dari kebutuhan nyata.',
   openGraph: {
-    title: 'Ravatech — Build. Scale. Evolve.',
-    description: 'Digital products built from real problems, not assumptions.',
+    title: 'Ravatech — Digital yang punya arah',
+    description: 'Website, platform, dan sistem yang dirancang untuk pekerjaan nyata.',
     type: 'website',
+    images: ['/ravatech.png'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ravatech — Build. Scale. Evolve.',
-    description: 'Digital products built from real problems, not assumptions.',
+    title: 'Ravatech — Digital yang punya arah',
+    description: 'Website, platform, dan sistem yang dirancang untuk pekerjaan nyata.',
+    images: ['/ravatech.png'],
   },
 };
 
@@ -37,12 +40,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${sora.variable}`}>
+    <html lang="id" className={`${inter.variable} ${sora.variable}`}>
       <body>
         <Navbar />
-        <div className="pt-16">
-          {children}
-        </div>
+        {children}
         <Footer />
       </body>
     </html>

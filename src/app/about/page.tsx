@@ -1,162 +1,19 @@
-'use client'
-
-import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Button } from '@/components/ui/Button'
-import { CheckCircle2 } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
+import { buttonStyles } from '@/components/ui/Button'
+import { ContactBanner } from '@/components/sections/ContactBanner'
 
-const values = [
-  {
-    title: 'Clarity',
-    description: 'Clear communication, clear decisions.'
-  },
-  {
-    title: 'Usefulness',
-    description: 'If it\'s not used, it\'s not done.'
-  },
-  {
-    title: 'Ownership',
-    description: 'We treat products like our own.'
-  },
-  {
-    title: 'Sustainability',
-    description: 'Built to last, not to impress.'
-  }
-]
-
-const workingPrinciples = [
-  'Problem first, not features',
-  'Clear scope before building',
-  'Honest trade-offs',
-  'Long-term thinking'
+const principles = [
+  ['01', 'Dengar sebelum merancang', 'Pahami orang, pekerjaan, dan bagian yang paling menghambat sebelum menentukan fitur.'],
+  ['02', 'Jelaskan setiap keputusan', 'Lingkup, prioritas, dan kompromi dibicarakan terbuka agar arah produk tetap masuk akal.'],
+  ['03', 'Bangun untuk dipakai', 'Tampilan dan sistem dirancang agar mudah dipahami, dijalankan, dan dirawat setelah rilis.'],
 ]
 
 export default function AboutPage() {
-  return (
-    <main className="min-h-screen px-4 py-20">
-      <div className="container mx-auto max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          {/* Page Hero */}
-          <div className="mb-16">
-            <p className="text-sm uppercase tracking-wider text-accent font-medium mb-4">
-              About Ravatech
-            </p>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Building Digital Systems That Make Sense
-            </h1>
-            <p className="text-xl text-secondary leading-relaxed">
-              Ravatech is a small, focused studio building digital products for real operational needs.
-            </p>
-          </div>
-          
-          {/* Why We Exist */}
-          <section className="mb-16">
-            <h2 className="text-3xl font-bold mb-6">Why Ravatech Exists</h2>
-            <div className="space-y-4 text-lg text-secondary leading-relaxed">
-              <p>
-                We started Ravatech after seeing too many digital products that looked good but failed in real use.
-              </p>
-              <p className="font-medium text-primary">
-                Our focus is simple: build systems that are actually used, maintained, and trusted.
-              </p>
-            </div>
-          </section>
-
-          {/* Founder Section */}
-          <section className="mb-16 bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-gray-100">
-            <h2 className="text-3xl font-bold mb-6">The Builder</h2>
-            <div className="space-y-4 text-lg text-secondary leading-relaxed">
-              <p>
-                <span className="font-bold text-primary">Ridho</span> is a product-focused engineer who designs and builds digital systems end-to-end — from UX and architecture to production deployment.
-              </p>
-              <p>
-                He works closely with clients to understand real workflows, not just feature requests.
-              </p>
-            </div>
-            
-            <div className="mt-8 space-y-2">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-accent shrink-0" />
-                <span className="text-secondary">Shipped production systems</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-accent shrink-0" />
-                <span className="text-secondary">Worked with communities & organizations</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-accent shrink-0" />
-                <span className="text-secondary">Focused on long-term maintainability</span>
-              </div>
-            </div>
-          </section>
-
-          {/* How We Work */}
-          <section className="mb-16 bg-secondary/5 rounded-2xl p-8 md:p-10">
-            <h2 className="text-3xl font-bold mb-6">How Ravatech Works</h2>
-            <p className="text-lg text-secondary mb-6 leading-relaxed">
-              We follow principles that ensure quality and sustainability:
-            </p>
-            <div className="grid md:grid-cols-2 gap-4">
-              {workingPrinciples.map((principle, index) => (
-                <div key={index} className="flex items-center gap-3 bg-white p-4 rounded-xl">
-                  <CheckCircle2 className="w-5 h-5 text-accent shrink-0" />
-                  <span className="font-medium">{principle}</span>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* What We Value */}
-          <section className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">What We Value</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {values.map((value, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white rounded-2xl p-6 border border-gray-100"
-                >
-                  <h3 className="text-xl font-bold mb-2">{value.title}</h3>
-                  <p className="text-secondary">{value.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </section>
-
-          {/* CTA */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="bg-primary text-white rounded-3xl p-8 md:p-12 text-center"
-          >
-            <h2 className="text-3xl font-bold mb-4">
-              Want to see what we've built?
-            </h2>
-            <p className="text-xl text-white/80 mb-8">
-              View our case studies and real projects.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/work">
-                <Button variant="primary">
-                  View Our Work
-                </Button>
-              </Link>
-              <Link href="/contact">
-                <Button variant="secondary" className="border-white text-white hover:bg-white/10">
-                  Get in Touch
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
-        </motion.div>
-      </div>
-    </main>
-  );
+  return <main>
+    <section className="hero-paper border-b border-line py-20 md:py-28"><div className="site-container grid gap-12 lg:grid-cols-[1.1fr_.9fr] lg:items-end"><div><p className="eyebrow">Tentang Ravatech</p><h1 className="page-title mt-5 max-w-3xl">Produk yang baik lahir dari <span className="editorial-serif text-accent">rasa ingin tahu.</span></h1></div><p className="lead max-w-xl">Ravatech adalah studio digital independen yang menghubungkan pemikiran produk, UX, dan engineering. Kami percaya pekerjaan yang rapi dimulai dengan memahami persoalannya.</p></div></section>
+    <section className="site-container grid gap-14 py-20 md:grid-cols-[.7fr_1fr] md:py-28"><div className="relative grid aspect-[4/3] max-w-md place-items-center overflow-hidden bg-[#eac5ad]"><span className="absolute -right-9 -top-16 font-heading text-[22rem] font-bold leading-none text-[#bb6c4c]/40">R</span><span className="relative editorial-serif text-8xl text-ink">R.</span></div><div><p className="eyebrow">Orang di balik karya</p><h2 className="section-title mt-4">Kenalan dengan Ridho.</h2><p className="mt-6 text-lg leading-8 text-muted">Ridho adalah engineer yang bekerja dari pengalaman pengguna dan arsitektur sistem hingga implementasi dan deployment. Ia berdiskusi langsung dengan klien untuk memahami alur kerja mereka dan menyusun solusi yang masuk akal.</p><p className="mt-5 leading-8 text-muted">Pendekatannya sengaja dekat: komunikasi jelas, keputusan yang beralasan, dan produk yang tetap berguna setelah diluncurkan.</p><Link href="/work" className={buttonStyles('text', 'mt-6')}>Lihat proyeknya <ArrowUpRight size={18}/></Link></div></section>
+    <section className="border-y border-line bg-white py-20 md:py-24"><div className="site-container grid gap-10 md:grid-cols-[.6fr_1fr]"><div><p className="eyebrow">Prinsip kerja</p><h2 className="section-title mt-4">Yang selalu <span className="editorial-serif text-accent">dipegang.</span></h2></div><div className="border-t border-line">{principles.map(([number, title, text]) => <article key={number} className="grid gap-3 border-b border-line py-7 sm:grid-cols-[3rem_1fr] sm:gap-6"><span className="eyebrow pt-1">{number}</span><div><h3 className="font-heading text-2xl font-semibold tracking-tight">{title}</h3><p className="mt-3 max-w-lg text-sm leading-7 text-muted">{text}</p></div></article>)}</div></div></section>
+    <ContactBanner />
+  </main>
 }

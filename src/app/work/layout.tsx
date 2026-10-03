@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Our Work — Ravatech',
-  description: 'Real projects solving real problems. Case studies of web platforms, admin systems, and community applications built by Ravatech.',
+  title: 'Karya — Ravatech',
+  description: 'Lihat proyek website, platform komunitas, dan sistem internal yang dikerjakan Ravatech.',
 }
 
 export default function WorkLayout({

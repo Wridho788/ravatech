@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Products & Services — Ravatech',
-  description: 'Custom-built digital products: web platforms, admin dashboards, progressive web apps, and SaaS MVPs tailored to your needs.',
+  title: 'Layanan — Ravatech',
+  description: 'Sistem internal, platform publik, dan produk digital khusus yang dibuat sesuai kebutuhan.',
 }
 
 export default function ProductsLayout({

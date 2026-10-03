@@ -1,94 +1,35 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
-import { Menu, X } from 'lucide-react'
 import { usePathname } from 'next/navigation'
+import { useState } from 'react'
+import { ArrowUpRight, Menu, X } from 'lucide-react'
+import { buttonStyles } from '@/components/ui/Button'
 
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/work', label: 'Work' },
-  { href: '/products', label: 'Products' },
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
+const links = [
+  { href: '/work', label: 'Karya' },
+  { href: '/products', label: 'Layanan' },
+  { href: '/about', label: 'Tentang' },
 ]
 
 export function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
+  const [open, setOpen] = useState(false)
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
-      isScrolled 
-        ? 'bg-background/95 backdrop-blur-md shadow-sm' 
-        : 'bg-background/80 backdrop-blur-sm'
-    }`}>
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="text-2xl font-bold hover:text-accent transition-colors">
-            Ravatech
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`font-medium transition-colors relative group ${
-                  pathname === link.href 
-                    ? 'text-accent' 
-                    : 'text-primary hover:text-accent'
-                }`}
-              >
-                {link.label}
-                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-accent transform origin-left transition-transform duration-200 ${
-                  pathname === link.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                }`}></span>
-              </Link>
-            ))}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 hover:bg-secondary/10 rounded-lg transition-colors"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`block py-3 font-medium transition-colors ${
-                  pathname === link.href 
-                    ? 'text-accent' 
-                    : 'text-primary hover:text-accent'
-                }`}
-                onClick={() => setIsOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        )}
+  return <header className="sticky top-0 z-50 border-b border-line bg-background/95 backdrop-blur-xl">
+    <nav className="site-container flex h-18 items-center justify-between" aria-label="Main navigation">
+      <Link href="/" className="flex items-center gap-3 text-xl font-bold tracking-[-.05em] text-ink" aria-label="Ravatech home">
+        <span className="grid h-9 w-9 place-items-center bg-ink font-heading text-lg font-bold text-white">R<span className="text-cyan">.</span></span>
+        Ravatech
+      </Link>
+      <div className="hidden items-center gap-8 md:flex">
+        {links.map(link => <Link key={link.href} href={link.href} aria-current={pathname === link.href || pathname.startsWith(`${link.href}/`) ? 'page' : undefined} className={`text-sm font-semibold transition-colors hover:text-accent ${pathname === link.href || pathname.startsWith(`${link.href}/`) ? 'text-accent' : 'text-muted'}`}>{link.label}</Link>)}
       </div>
+      <Link href="/contact" className={buttonStyles('primary', 'hidden md:inline-flex')}>Mulai bicara <ArrowUpRight size={17} /></Link>
+      <button type="button" className="grid h-11 w-11 place-items-center border border-line md:hidden" aria-label={open ? 'Tutup menu' : 'Buka menu'} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(value => !value)}>{open ? <X size={22} /> : <Menu size={22} />}</button>
     </nav>
-  )
+    <div id="mobile-navigation" hidden={!open} className="site-container border-t border-line pb-5 pt-3 md:hidden">
+      {[...links, { href: '/contact', label: 'Kontak' }].map(link => <Link key={link.href} href={link.href} aria-current={pathname === link.href ? 'page' : undefined} className="block px-3 py-3 text-base font-semibold text-ink hover:bg-white hover:text-accent" onClick={() => setOpen(false)}>{link.label}</Link>)}
+    </div>
+  </header>
 }
